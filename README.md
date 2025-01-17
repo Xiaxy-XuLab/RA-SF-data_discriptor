@@ -1,2 +1,2 @@
 # RA-SF-data_discriptor
-These are scripts for single-cell analysis of synovial fluid in rheumatoid arthritis with TNF-α/JAK inhibitor treatment.
+These are scripts for Single-cell transcriptome sequencing of synovial fluid cells from patients of rheumatoid arthritis treated with adalimumab/tofacitinib!
