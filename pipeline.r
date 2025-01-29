@@ -44,6 +44,7 @@ if (T) {
     library(doParallel)
     library(readr)
     library(future)
+    library(org.Hs.eg.db)
 }
 
 # Set working directory
