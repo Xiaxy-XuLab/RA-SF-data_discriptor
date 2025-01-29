@@ -523,27 +523,6 @@ mac_tcell <- sub %>%
 marker_tcell <- FindAllMarkers(mac_tcell, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.1) # nolint
 plot_violin(mac_tcell, c("GZMA", "GZMM", "GZMK", "JUND"), "Figure1/tcell_acr20_vln.pdf", 6, 2.5) # nolint
 
-# Heatmap for gene expression
-genes <- c("IL6", "TNF", "IL1A", "IL1B", "IL12A", "IL12B", "IL18", "JAK1", "JAK2", "JAK3") # nolint
-
-matr <- data %>%
-    subset(anno3 %in% unique(data$anno3)) %>%
-    group_by(anno3) %>%
-    summarise(across(all_of(genes), ~ sum(.x > 0) / n())) %>%
-    column_to_rownames("anno3") %>%
-    t() %>%
-    .[, c(1, 3, 2, 4, 6, 5)]
-
-pdf("Figure1/phea.pdf", width = 3, height = 3)
-pheatmap(matr,
-    cluster_rows = FALSE, cluster_cols = FALSE,
-    color = colorRampPalette(brewer.pal(n = 9, name = "GnBu"))(100),
-    border_color = "black"
-)
-dev.off()
-
-write.table(matr, "Fig2/fig2a_table.txt", quote = FALSE, sep = "\t")
-
 # Differential expression analysis
 kk <- unique(data_input$celltype)[c(1, 2, 4:8)]
 pvalue <- matrix(NA, ncol = 3 * length(kk), nrow = length(genes))
