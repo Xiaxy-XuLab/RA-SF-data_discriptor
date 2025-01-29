@@ -487,8 +487,8 @@ colors_vln <- c("#ECB27F", "#B294C7")
 
 # Subset data for ACR20 analysis
 sub <- data %>%
-    subset(treatment == "BT") %>%
-    mutate(acr20 = ifelse(orig.ident %in% unique(orig.ident)[c(1, 4, 6, 8, 2, 9)], "Y", "N")) # nolint
+    subset(treatment == "BT")
+sub$acr20 <- ifelse(sub$orig.ident %in% unique(sub$orig.ident)[c(1, 4, 6, 8, 2, 9)], "Y", "N") # nolint
 
 # Function to plot violin plots
 plot_violin <- function(data, features, output_file, width, height) {
