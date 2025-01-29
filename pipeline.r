@@ -363,8 +363,8 @@ plot_go_enrichment <- function(go_result, select_terms, output_file, width, heig
         theme(
             axis.title.y = element_blank(),
             axis.text = element_text(color = "black")
-        ) +
-        ggsave(output_file, width = width, height = height)
+        )
+    ggsave(output_file, width = width, height = height)
 }
 
 # Read marker files
